@@ -4,9 +4,10 @@ import styled from "styled-components";
 const Form = styled.form`
   width: 30rem;
   height: auto;
-  padding: 1rem;
+  padding: 2rem;
   border: 1px solid #adb5bd;
   background-color: #fff;
+  border-radius: 4px;
 `;
 
 const Input = styled.input`
@@ -46,7 +47,8 @@ const Botao = styled.button`
 
 const MessageError = styled.div`
   color: red;
-  height: 20px;
+  min-height: 20px;
+  max-height: auto;
 `;
 
 const OrganizaInputsRadios = styled.div`

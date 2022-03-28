@@ -26,6 +26,14 @@ function App() {
         "Informe um CNPJ válido."
       ),
     genero: yup.string().required("O campo gênero é obrigatório."),
+    email: yup
+      .string()
+      .email("Informe um email válido")
+      .required("O campo email é obrigatório."),
+    senha: yup
+      .string()
+      .min(6, "A senha deve ter no mínimo 6 caracteres.")
+      .required("O campo senha é obrigatório."),
   });
 
   const formik = useFormik({
@@ -39,6 +47,8 @@ function App() {
         feminimo: "Feminino",
         outro: "Outro",
       },
+      email: "",
+      senha: "",
     },
     validationSchema: schema,
     onSubmit: (values) => {
@@ -156,6 +166,40 @@ function App() {
               {formik.errors.genero &&
                 formik.touched.genero &&
                 formik.errors.genero}
+            </Styles.MessageError>
+          </Styles.Organizador>
+          <Styles.Organizador>
+            <Styles.Label>
+              Email
+              <Styles.Input
+                onBlur={formik.handleBlur}
+                type="email"
+                value={formik.values.email}
+                onChange={formik.handleChange}
+                name="email"
+              />
+            </Styles.Label>
+            <Styles.MessageError>
+              {formik.errors.email &&
+                formik.touched.email &&
+                formik.errors.email}
+            </Styles.MessageError>
+          </Styles.Organizador>{" "}
+          <Styles.Organizador>
+            <Styles.Label>
+              Senha
+              <Styles.Input
+                onBlur={formik.handleBlur}
+                type="password"
+                value={formik.values.senha}
+                onChange={formik.handleChange}
+                name="senha"
+              />
+            </Styles.Label>
+            <Styles.MessageError>
+              {formik.errors.senha &&
+                formik.touched.senha &&
+                formik.errors.senha}
             </Styles.MessageError>
           </Styles.Organizador>
           <Styles.Botao type="submit">Enviar</Styles.Botao>
